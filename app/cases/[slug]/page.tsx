@@ -10,8 +10,37 @@ const context: Record<string, { team: string; contributions: string; opening: st
 };
 export function generateStaticParams() { return published.map(({ slug }) => ({ slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) { const { slug } = await params; const s = published.find((item) => item.slug === slug); return { title: s ? s.title + " — Olusola Kalejaiye" : "Case Study" }; }
+
+const heritageAssets = {
+  onboarding: [
+    "https://framerusercontent.com/images/KmtJB5MUmS6JSN7VviibqAacOw.gif?width=750&height=1624",
+    "https://framerusercontent.com/images/4Fjav5Xaj1diQ6FGkV4x5VHYW4o.png?width=863&height=1771",
+    "https://framerusercontent.com/images/YhrKqjqwiqeSxG8gchCKP2RplM.gif?width=375&height=812",
+  ],
+  home: [
+    "https://framerusercontent.com/images/Hp4kz0gG6eqvRDrWE3vh9LH8EE0.gif?width=750&height=1624",
+    "https://framerusercontent.com/images/aKhsqB55uLz4Vd1IgvY4rLoXuA.gif?width=750&height=1624",
+  ],
+  transfers: [
+    "https://framerusercontent.com/images/9A2JWBwqOrox3a9Up6UBBZEVOeY.gif?width=886&height=1778",
+    "https://framerusercontent.com/images/ieWwbss3aphoc9w0yPlUewIVLo.gif?width=750&height=1624",
+  ],
+  system: "https://framerusercontent.com/images/Db2azuiGf6jiXSXhuv6vK1JGs.gif?width=960&height=720",
+};
+function Visual({ src, alt }: { src: string; alt: string }) { return <div className="heritageVisual"><img src={src} alt={alt} /></div>; }
+function HeritageCase() {
+  return <main className="heritageCase"><header className="heritageTop"><a href="/cases">←&nbsp; Back</a><a href="#contact">Get in touch</a></header>
+    <section className="heritageHero"><div><span className="heritageMark">HB</span><h1>Modernizing Heritage Bank&apos;s<br />Mobile Experience For The<br />Next Generation of Users</h1><p>2023&nbsp; · &nbsp;Mobile, Banking, Fintech</p></div><img src={heritageAssets.onboarding[1]} alt="Heritage Bank mobile app" /></section>
+    <section className="heritageBrief"><aside><h3>Team</h3><p><b>2x</b> Product Designer<br /><b>1x</b> User Researcher<br /><b>1x</b> Product Manager<br /><b>2x</b> Mobile Developers<br /><b>2x</b> Backend Developers</p><h3>Timeline</h3><p>May ‘23 - Jan ‘24</p></aside><div><h2>A bit of context...</h2><p>Heritage Bank is one of Nigeria&apos;s commercial banks with over 2.3M depositors. Its mobile banking app had grown outdated, with clunky navigation, poor onboarding, inconsistent design, and no dark mode. These issues left users frustrated and stakeholders dissatisfied.</p><h2>My Role</h2><p>As lead product designer, I owned both UX and UI. I began with a UX audit and preliminary report, analyzing 200+ App Store reviews and benchmarking leading fintech apps. This revealed that onboarding and transfers were the biggest sources of frustration, while competitors set higher standards for navigation and clarity.</p><p>Guided by these insights, I redesigned onboarding flows to reduce early friction, introduced a token-based design system for scalability, and restructured navigation to bring core actions within one or two taps.</p><h2>Impact &amp; Results</h2><div className="heritageMetrics"><span><b>10k</b>Downloads in 1st month</span><span><b>97%</b>Unassisted onboarding</span><span><b>60%</b>Reduction in TTV</span></div></div></section>
+    <section className="heritageFeature"><h2>Onboarding</h2><p>I redesigned the onboarding experience to distinguish between new users, returning customers, and Padie users. The new flow reduces friction and clarifies next steps with minimal cognitive load.</p><div className="heritageGrid three">{heritageAssets.onboarding.map((image, i) => <article key={image}><Visual src={image} alt="Onboarding screen" /><p>{["New users can setup a profile with an account number and OTP", "HB Padie users onboarded using their existing credentials, but will create a transaction PIN and set security questions.", "Returning users can login and jump right get back into it. Subsequent logins can be done with biometrics"][i]}</p></article>)}</div></section>
+    <section className="heritageFeature"><h2>A New Home &amp; Navigation</h2><p>The Home screen was restructured to showcase relevant shortcuts like transfers, bills, and account history, making frequent actions more accessible.</p><div className="heritageGrid">{heritageAssets.home.map((image, i) => <article key={image}><Visual src={image} alt="Heritage Bank home screen" /><p>{i === 0 ? "I introduced a bottom navigation bar featuring the most-used sections; Home, Transactions, Self-Service, and Profile." : "Do More with Heritage Bank showcases relevant shortcuts like transfers, bills, and account history, making frequent actions more accessible."}</p></article>)}</div></section>
+    <section className="heritageFeature"><h2>Transfers in Few Clicks</h2><p>I added intra-bank and interbank transfers as separate shortcuts on the home screen for easy access. Repeat transfers can be done with quick access to recent recipients.</p><div className="heritageGrid">{heritageAssets.transfers.map((image) => <article key={image}><Visual src={image} alt="Transfer flow" /><p>Intrabank Payments</p></article>)}</div></section>
+    <section className="heritageFeature"><h2>Multi-Theme Compatibility</h2><p>I created a component-based system using tokens for colors, spacing, and typography, making it easy for engineers to switch themes or introduce new modules. The system is structured for easy maintenance and updates.</p><div className="heritageGrid"><Visual src={heritageAssets.system} alt="Heritage design system" /><Visual src={heritageAssets.system} alt="Heritage design system" /></div><div className="heritageSystem"><h2>Figma Variables, Tokens, &amp; Components</h2><p>I created a component-based system using tokens for colors, spacing, and typography, making it easy for engineers to switch themes or introduce new modules. The system is structured for easy maintenance and updates.</p></div></section>
+    <div id="contact"><Contact /></div></main>;
+}
 export default async function CasePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const s = published.find((item) => item.slug === slug); if (!s) notFound();
+  if (s.slug === "heritage-bank") return <HeritageCase />;
   const details = context[s.slug]; const nextStudies = details.next.map((next) => published.find((item) => item.slug === next)).filter(Boolean);
   return <main><SiteHeader /><article className="framerCase">
     <header className="framerCaseHero shell"><p className="caseEyebrow">{s.client}</p><h1>{s.title}</h1><p>{s.subtitle}</p></header>
