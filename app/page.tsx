@@ -9,26 +9,26 @@ const projects = [
 const portrait = "https://framerusercontent.com/images/AJALIhgDyNnUPG2k5lrhhwd9Jdk.png?width=160&height=160";
 
 export default function Home() {
-  return <main>
-    <header className="nav shell">
+  return <main className="homePage">
+    <header className="nav homeNav">
       <a className="identity" href="#top"><img src={portrait} alt="Olusola Kalejaiye" /><span><strong>Olusola K.</strong><small>Product Designer</small></span></a>
       <nav><a href="/cases">Cases</a><a href="/about">About</a></nav>
       <a className="contactButton" href="#get-in-touch">Get in touch</a>
     </header>
-    <section className="intro shell" id="top">
+    <section className="intro homeShell" id="top">
       <h1>Hi there, I&apos;m Olusola!<br />You can call me &apos;Sola&apos; <span>[shaw–la]</span></h1>
       <p className="lede">I’m a product designer based in the United Kingdom 🇬🇧, designing high trust fintech and operational products used by millions, simplifying complex financial systems into clear experiences.</p>
       <div className="heroVisual"><img src="https://framerusercontent.com/images/5QIQUL0FjKO5Az0BMqVwaQ6Mps.gif?scale-down-to=2048" alt="Mobile product design preview" /></div>
       <p className="experience" id="about">I&apos;m currently designing for trust and clarity at <a href="https://www.interswitchgroup.com/">Interswitch Group</a>.<br />Previously worked with teams at <a href="https://terrace.fi/">Terrace (YC S22)</a>, <a href="https://omnibiz.com/">Omnibiz Africa</a> and <a href="https://www.heroshe.com/">Heroshe</a>.</p>
     </section>
-    <section className="work shell" id="work">
+    <section className="work homeShell" id="work">
       <h2>Selected Work</h2>
       <div className="projects">{projects.map(p => <a className="project" href={p.href} key={p.title}>
         <div className={"projectImage " + (p.wide ? "wide" : "phone")}><img src={p.image} alt={p.client + " project preview"} /></div>
         <div className="meta"><span>{p.client}</span><span>{p.year}</span></div><h3>{p.title}</h3>
       </a>)}</div>
     </section>
-    <section className="closing shell" id="get-in-touch">
+    <section className="closing homeShell" id="get-in-touch">
       <img src={portrait} alt="" /><h2>Let’s work together!</h2>
       <p>Would you like to discuss an opportunity or learn more about me or my work, hit me up!</p>
       <a className="email" href="mailto:olusolakalejaiye@icloud.com?subject=Let%27s%20Work%20Together">olusolakalejaiye@icloud.com</a>
