@@ -1,9 +1,9 @@
 const projects = [
-  { client: "Heritage Bank", year: "2023", title: "Modernizing Heritage Bank's Mobile Banking Experience", href: "https://olusxla.framer.website/cases/heritage-bank", image: "https://framerusercontent.com/images/lgoQ7o57ZB1VU4RaW3dG6fbqOKk.gif?width=400&height=720" },
-  { client: "MVNO", year: "2024", title: "Blending Connectivity and Payments for the Modern Nigerian", href: "https://olusxla.framer.website/cases/mvno", image: "https://framerusercontent.com/images/K3ubM3PgPfjMu98PzZruZM2vXHg.gif?width=502&height=862" },
+  { client: "Heritage Bank", year: "2023", title: "Modernizing Heritage Bank's Mobile Banking Experience", href: "/cases/heritage-bank", image: "https://framerusercontent.com/images/lgoQ7o57ZB1VU4RaW3dG6fbqOKk.gif?width=400&height=720" },
+  { client: "MVNO", year: "2024", title: "Blending Connectivity and Payments for the Modern Nigerian", href: "/cases/mvno", image: "https://framerusercontent.com/images/K3ubM3PgPfjMu98PzZruZM2vXHg.gif?width=502&height=862" },
   { client: "Study", year: "2025", title: "Can Human-Centric (Conversational) AI Improve the Way We Experience Mobile Banking?", href: "https://www.figma.com/deck/wMuryAcqkAtYRmw8vSc5t7/Presentation-Sildes?node-id=6-65&t=SBY3NPzNEH6bO6bR-1", image: "https://framerusercontent.com/images/xdxOrp8dBGvRcDxjB9ctWElBcU.gif?width=400&height=720" },
-  { client: "Interswitch", year: "2023", title: "Bringing Visibility to a Billion Transactions for Interswitch’s Partners", href: "https://olusxla.framer.website/cases/opscentral-case-study", image: "https://framerusercontent.com/images/Qeg5qimjBWi2QQwhXtQh4YZrbLM.png?scale-down-to=2048&width=2880&height=1800", wide: true },
-  { client: "Heroshe", year: "2021", title: "How Building Trust and Transparency Led to 2x Growth for Heroshe", href: "https://olusxla.framer.website/cases/heroshe-case-study", image: "https://framerusercontent.com/images/XUgbrPAAQGZAZTmqS2XmkSQkg.png?scale-down-to=2048&width=2560&height=1568", wide: true },
+  { client: "Interswitch", year: "2023", title: "Bringing Visibility to a Billion Transactions for Interswitch’s Partners", href: "/cases/opscentral-case-study", image: "https://framerusercontent.com/images/Qeg5qimjBWi2QQwhXtQh4YZrbLM.png?scale-down-to=2048&width=2880&height=1800", wide: true },
+  { client: "Heroshe", year: "2021", title: "How Building Trust and Transparency Led to 2x Growth for Heroshe", href: "/cases/heroshe-case-study", image: "https://framerusercontent.com/images/XUgbrPAAQGZAZTmqS2XmkSQkg.png?scale-down-to=2048&width=2560&height=1568", wide: true },
 ];
 
 const portrait = "https://framerusercontent.com/images/AJALIhgDyNnUPG2k5lrhhwd9Jdk.png?width=160&height=160";
@@ -12,7 +12,7 @@ export default function Home() {
   return <main>
     <header className="nav shell">
       <a className="identity" href="#top"><img src={portrait} alt="Olusola Kalejaiye" /><span><strong>Olusola K.</strong><small>Product Designer</small></span></a>
-      <nav><a href="#work">Cases</a><a href="#about">About</a></nav>
+      <nav><a href="/cases">Cases</a><a href="/about">About</a></nav>
       <a className="contactButton" href="#get-in-touch">Get in touch</a>
     </header>
     <section className="intro shell" id="top">
